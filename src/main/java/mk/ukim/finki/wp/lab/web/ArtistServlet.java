@@ -14,7 +14,7 @@ import mk.ukim.finki.wp.lab.service.ArtistService;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/artist")
+@WebServlet(urlPatterns = "/servlet/artist")
 public class ArtistServlet extends HttpServlet {
     private final ArtistService artistService;
 

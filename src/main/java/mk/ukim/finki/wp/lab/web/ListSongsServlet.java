@@ -30,16 +30,22 @@ public class ListSongsServlet extends HttpServlet {
                 .buildExchange(req, resp);
 
         WebContext context = new WebContext(webExchange);
+        String text=req.getParameter("search");
+        if(text!=null){
+            context.setVariable("songs",this.songService.findByTitle(text));
 
-
-        context.setVariable("songs", this.songService.listSongs());
+        }
+        else{
+            context.setVariable("songs", this.songService.listSongs());
+        }
         springTemplateEngine.process("listSongs.html", context, resp.getWriter());
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String trackId=req.getParameter("trackId");
-        req.getSession().setAttribute("trackId",trackId);
-        resp.sendRedirect("/artist");
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//        String trackId=req.getParameter("trackId");
+//        req.getSession().setAttribute("trackId",trackId);
+//        resp.sendRedirect("/artist");
+//    }
 }

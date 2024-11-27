@@ -33,7 +33,7 @@
 </header>
 <section>
     <h2>Select artist:</h2>
-    <form th:method="POST" th:action="@{/artist}">
+    <form th:method="POST"  th:action="@{'/songsDetails/' + ${trackId}}">
         <div th:each="artist : ${artists}">
             <input th:id="${artist.id}" type="radio" name="id" th:value="${artist.id}">
             <label th:for="${artist.id}" th:text="'Name: ' + ${artist.firstName} + ', Surname: ' + ${artist.lastName}"></label>
