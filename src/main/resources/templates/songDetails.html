@@ -9,5 +9,6 @@
     <ul>
         <li th:each="artist : ${performers}" th:text="${artist.firstName + ' ' + artist.lastName}">Artist Name</li>
     </ul>
+    <h2>Visits: <span th:text="${song.visits}"></span></h2>
 </section>
 </html>

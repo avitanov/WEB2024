@@ -64,5 +64,9 @@ public class SongServiceImpl implements SongService {
         Album al=this.albumRepository.findById(albumId).orElse(null);
         this.songRepository.editSong(id,trackId,title,genre,releaseYear,al);
     }
+    @Override
+    public void visitSong(String trackId){
+        this.songRepository.visitedSong(trackId);
+    }
 
 }

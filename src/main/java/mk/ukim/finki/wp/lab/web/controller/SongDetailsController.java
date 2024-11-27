@@ -25,7 +25,7 @@ public class SongDetailsController {
     @GetMapping("/{trackId}")
     public String getDetails(@PathVariable String trackId, Model model){
         Song song = songService.findByTrackId(trackId);
-
+        songService.visitSong(trackId);
         model.addAttribute("song", song);
         model.addAttribute("performers", song.getPerformers());
 
@@ -36,6 +36,7 @@ public class SongDetailsController {
     public String getDetails(@PathVariable String trackId,
                              @RequestParam String id, Model model){
         Song song = songService.findByTrackId(trackId);
+        songService.visitSong(trackId);
         Artist selectedArtist = artistService.ArtistfindById(Long.parseLong(id));
         if(!song.getPerformers().contains(selectedArtist)) {
             songService.addArtistToSong(selectedArtist, song);

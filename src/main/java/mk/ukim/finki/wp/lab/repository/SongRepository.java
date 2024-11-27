@@ -51,4 +51,9 @@ public class SongRepository {
         tmp.setAlbum(album);
 
     }
+    public void visitedSong(String id){
+        Song tmp=DataHolder.songList.stream().filter(song -> song.getTrackId().equals(id)).findFirst().get();
+        int visits=tmp.getVisits();
+        tmp.setVisits(++visits);
+    }
 }

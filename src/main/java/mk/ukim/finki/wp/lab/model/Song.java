@@ -19,6 +19,7 @@ public class Song {
     private int releaseYear;
     private List<Artist> performers;
     private Album album;
+    private int visits;
     public Song(String trackId, String title, String genre, int releaseYear) {
         this.id=(long) (Math.random() * 1000);
         this.trackId = trackId;
@@ -27,6 +28,7 @@ public class Song {
         this.releaseYear = releaseYear;
         this.performers = new ArrayList<>();
         album=null;
+        visits=0;
     }
     public void AddArtist(Artist a){
         performers.add(a);
