@@ -10,5 +10,27 @@
         <li th:each="artist : ${performers}" th:text="${artist.firstName + ' ' + artist.lastName}">Artist Name</li>
     </ul>
     <h2>Visits: <span th:text="${song.visits}"></span></h2>
+    <h2>Reviews:</h2>
+    <ul>
+        <!-- Check if the list of reviews is not empty -->
+        <li th:if="${song.reviews.size()==0}">No reviews</li>
+
+        <!-- If reviews are available, display them -->
+        <li th:each="review : ${song.reviews}" th:text="${review}"></li>
+    </ul>
 </section>
+<form th:action="@{'/songsDetails/' + ${song.getTrackId()}+'/addReview'}" method="POST">
+    <input id="id" type="hidden" name="id"
+           th:value="(${song} != null ? ${song.getId()} : '')">
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               id="review"
+               name="review"
+               value=""
+               placeholder="Enter a review">
+    </div>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 </html>

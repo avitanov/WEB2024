@@ -47,4 +47,14 @@ public class SongDetailsController {
 
         return "songDetails";
     }
+    @PostMapping("/{trackId}/addReview")
+    public String addReview(@PathVariable String trackId,
+                             @RequestParam String review, Model model){
+        this.songService.addReview(trackId,review);
+        Song song = songService.findByTrackId(trackId);
+        model.addAttribute("song", song);
+        model.addAttribute("performers", song.getPerformers());
+
+        return "songDetails" ;
+    }
 }

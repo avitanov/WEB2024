@@ -80,4 +80,11 @@ public class SongServiceImpl implements SongService {
         this.songRepository.save(tmp);
     }
 
+    @Override
+    public void addReview(String trackId, String text) {
+        Song tmp = this.songRepository.findByTrackId(trackId);
+        tmp.AddReview(text);
+        this.songRepository.save(tmp);
+    }
+
 }
