@@ -2,26 +2,26 @@ package mk.ukim.finki.wp.lab.service.impl;
 
 import mk.ukim.finki.wp.lab.model.Artist;
 import org.springframework.stereotype.Service;
-import mk.ukim.finki.wp.lab.repository.ArtistRepository;
+import mk.ukim.finki.wp.lab.repository.OldRepo.ArtistRepositoryOld;
 import mk.ukim.finki.wp.lab.service.ArtistService;
 
 import java.util.List;
 
 @Service
 public class ArtistServiceImpl implements ArtistService {
-    private final ArtistRepository artistRepository;
+    private final ArtistRepositoryOld artistRepositoryOld;
 
-    public ArtistServiceImpl(ArtistRepository artistRepository) {
-        this.artistRepository = artistRepository;
+    public ArtistServiceImpl(ArtistRepositoryOld artistRepositoryOld) {
+        this.artistRepositoryOld = artistRepositoryOld;
     }
 
     @Override
     public List<Artist> listArtists() {
-        return artistRepository.findAll();
+        return artistRepositoryOld.findAll();
     }
 
     @Override
     public Artist ArtistfindById(Long id) {
-        return artistRepository.findById(id).orElse(null);
+        return artistRepositoryOld.findById(id).orElse(null);
     }
 }
